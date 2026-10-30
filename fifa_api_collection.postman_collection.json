@@ -1,0 +1,322 @@
+{
+  "info": {
+    "_postman_id": "0652741c-ecc4-4e1d-9cc2-d504cae96a9f",
+    "name": "My Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59096919",
+    "_collection_link": "https://go.postman.co/collection/59096919-0652741c-ecc4-4e1d-9cc2-d504cae96a9f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Calendario y torneos",
+      "item": [
+        {
+          "name": "Fixture",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\npm.test(\"Status code es 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Tiempo de respuesta menor a 1.5s\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(1500);\r\n});\r\n\r\npm.test(\"El payload contiene Results\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"Results\");\r\n    pm.expect(jsonData.Results).to.be.an(\"array\");\r\n    pm.expect(jsonData.Results.length).to.be.above(0);\r\n});\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.fifa.com/api/v3/calendar/matches?language=es&count=500&idCompetition=17&idSeason=285023",
+              "protocol": "https",
+              "host": [
+                "api",
+                "fifa",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "calendar",
+                "matches"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "es"
+                },
+                {
+                  "key": "count",
+                  "value": "500"
+                },
+                {
+                  "key": "idCompetition",
+                  "value": "17"
+                },
+                {
+                  "key": "idSeason",
+                  "value": "285023"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Partidos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.fifa.com/api/v3/calendar/matches?language=es&idCompetition=17&idSeason=285023\t&idGroup=289275",
+              "protocol": "https",
+              "host": [
+                "api",
+                "fifa",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "calendar",
+                "matches"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "es"
+                },
+                {
+                  "key": "idCompetition",
+                  "value": "17"
+                },
+                {
+                  "key": "idSeason",
+                  "value": "285023\t"
+                },
+                {
+                  "key": "idGroup",
+                  "value": "289275"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "selecciones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.fifa.com/api/v3/competitions/teams/285023",
+              "protocol": "https",
+              "host": [
+                "api",
+                "fifa",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "competitions",
+                "teams",
+                "285023"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Bandera de Selección",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.fifa.com/api/v3/picture/flags-sq-3/MEX",
+              "protocol": "https",
+              "host": [
+                "api",
+                "fifa",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "picture",
+                "flags-sq-3",
+                "MEX"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "fecha inagural",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.fifa.com/api/v3/calendar/matches?language=es&idCompetition=17&idSeason=285023\t&from=2026-06-11T00:00:00Z&to=2026-06-12T23:59:59Z",
+              "protocol": "https",
+              "host": [
+                "api",
+                "fifa",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "calendar",
+                "matches"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "es"
+                },
+                {
+                  "key": "idCompetition",
+                  "value": "17"
+                },
+                {
+                  "key": "idSeason",
+                  "value": "285023\t"
+                },
+                {
+                  "key": "from",
+                  "value": "2026-06-11T00:00:00Z"
+                },
+                {
+                  "key": "to",
+                  "value": "2026-06-12T23:59:59Z"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Partido en Vivo y Eventos",
+      "item": [
+        {
+          "name": "En vivo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021443?language=es",
+              "protocol": "https",
+              "host": [
+                "api",
+                "fifa",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "live",
+                "football",
+                "17",
+                "285023",
+                "289273",
+                "400021443"
+              ],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "es"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "t/g",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code es 200 OK\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"La respuesta contiene eventos\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"Event\");\r\n    pm.expect(jsonData.Event).to.be.an(\"array\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.fifa.com/api/v3/timelines/400021443?language =es",
+              "protocol": "https",
+              "host": [
+                "api",
+                "fifa",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "timelines",
+                "400021443"
+              ],
+              "query": [
+                {
+                  "key": "language ",
+                  "value": "es"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "FIFA World Cup 2026 - API Explorer",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "?baseUrl=https://api.fifa.com/api/v3&idCompetition=17&idSeason=285023&idStage=289273&idGroup=289275&idMatch=400021443&language=es",
+          "query": [
+            {
+              "key": "baseUrl",
+              "value": "https://api.fifa.com/api/v3"
+            },
+            {
+              "key": "idCompetition",
+              "value": "17"
+            },
+            {
+              "key": "idSeason",
+              "value": "285023"
+            },
+            {
+              "key": "idStage",
+              "value": "289273"
+            },
+            {
+              "key": "idGroup",
+              "value": "289275"
+            },
+            {
+              "key": "idMatch",
+              "value": "400021443"
+            },
+            {
+              "key": "language",
+              "value": "es"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
